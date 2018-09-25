@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+   <title> Starbucks</title>
+  <script type="text/javascript" src="jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="jquery-ui/jquery-ui.js"></script>
+  <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css"></link>
+  <style>
+  #project-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 1em;
+    float:left;
+  }
+  #project-icon {
+    float: left;
+    height: 32px;
+    width: 32px;
+  }
+  #project-description {
+    margin: 0;
+    padding: 0;
+  }
+  </style>
+   <style>
+    h1{
+  background-color:green;
+  font-size:70px;
+    }
+    h2{
+  color:black;
+    }
+    body{
+    background-color: #D2DC9D;
+    }
+    blockquote{
+    background-color: #D2DC9D;
+    }
+    footer{
+     font-size:24px;
+    }
+   </style>
+ </head>
+<body>
+  <a href="index.html">Home</a>
+  <a href="AboutUs.html">About Us</a>
+  <a href="success.html">Success</a>
+  <a href="Products.html">Products</a>
+  <a href="ContactUs.html">Contact Us</a>
+  <a href="Gallery.html">Gallery</a>
+  <a href="order.html">Buy it now</a>
+
+<div style="float: right">
+  <div id="project-label">Search here:</div>
+  <img id="project-icon" src="" class="ui-state-default" alt="">
+  <input id="project" style="height: 28px">
+  <input type="hidden" id="project-id">
+  <p id="project-description"></p>
+</div>
+
+<h1> STARBUCKS</h1>
+   <br>
+
+   <img src="StarbucksLogo.gif" width="250" height="200">
+   <video src="StarbucksClip.mp4" width="800" height="400" poster="highlight.jpg" controls autoplay></video>
+   <img src="StarbucksLogo.gif" width="250" height="200">
+
+   <h2> Since 1971, it always has been and will always be about quality. We are passionate about ethically sourcing only the finest Arabica coffee beans and roasting them with great care. Our passion for coffee is rivaled only by our love of sharing it.  </h2>
+
+
+<footer>
+      <a href="Index.html">Previous</a>
+      <a href="AboutUs.html">Next</a>
+      <br>
+      <br>
+      <small> Copyright &copy;2017 Lauro Ribeiro.</small>
+</footer>
+
+<script>
+  $( function() {
+    var projects = [
+      {
+        value: "Tea",
+        label: "Tea",
+        desc: "Delicious teas and botanicals.",
+        icon: "Tea.jpg"
+      },
+      {
+        value: "Frappuccino",
+        label: "Frappuccino",
+        desc: "Icy blended beverages.",
+        icon: "Frappuccino.jpg"
+      },
+      {
+        value: "Hot Chocolate",
+        label: "Hot Chocolate",
+        desc: "Creamy hot chocolate.",
+        icon: "HotChocolate.jpg"
+      },
+      {
+        value: "Coffee",
+        label: "Coffee",
+        desc: "Roasted and brewed fresh all day long.",
+        icon: "Coffee.jpg"
+      },
+      {
+        value: "Salads",
+        label: "Salads",
+        desc: "Wholesome and tasty for a perfect lunch.",
+        icon: "Salads.jpg"
+      }
+    ];
+ 
+    $( "#project" ).autocomplete({
+      minLength: 0,
+      source: projects,
+      focus: function( event, ui ) {
+        $( "#project" ).val( ui.item.label );
+        return false;
+      },
+      select: function( event, ui ) {
+        $( "#project" ).val( ui.item.label );
+        $( "#project-id" ).val( ui.item.value );
+        $( "#project-description" ).html( ui.item.desc );
+        $( "#project-icon" ).attr( "src", ui.item.icon );
+ 
+        return false;
+      }
+    })
+    .autocomplete( "instance" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<div>" + item.label + "<br>" + item.desc + "</div>" )
+        .appendTo( ul );
+    };
+  } );
+</script>
+
+</body>
+</html>

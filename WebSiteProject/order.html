@@ -1,0 +1,121 @@
+  <!DOCTYPE HTML>
+  <html>
+  <head>
+    <title> Starbucks</title>
+    <script type="text/javascript" src="jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="jquery-ui/jquery-ui.js"></script>
+    <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css"></link>
+    <style>
+      h1{
+    background-color:green;
+    font-size:70px;
+      }
+      h2{
+    color:black;
+      }
+      body{
+      background-color: #D2DC9D;
+      }
+      blockquote{
+      background-color: #D2DC9D;
+      }
+      footer{
+      font-size:24px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="index.html">Home</a>
+    <a href="AboutUs.html">About Us</a>
+    <a href="Products.html">Products</a>
+    <a href="ContactUs.html">Contact Us</a>
+    <a href="Gallery.html">Gallery</a>
+    <a href="OrderOnline.html">Order Online</a>
+
+    <div>
+      <div id="accordion">
+      <h3>Order Information</h3>
+      <div>
+        <fieldset>
+          <legend>Select the desired product: </legend>
+          <label for="radio-1">Tea</label>
+          <input type="radio" name="radio-1" id="radio-1">
+          <label for="radio-2">Frappuccino</label>
+          <input type="radio" name="radio-1" id="radio-2">
+          <label for="radio-3">Hot Chocolate</label>
+          <input type="radio" name="radio-1" id="radio-3">
+          <label for="radio-4">Coffee</label>
+          <input type="radio" name="radio-1" id="radio-4">
+        </fieldset>
+        <fieldset>
+          <legend>Quantity</legend>
+          <input type="text" name="quantity" title="Define how many of the select product do you want">
+        </fieldset>
+      </div>
+      <h3>Contact Information</h3>
+      <div>
+        <fieldset>
+          <legend>Name</legend>
+          <input type="text" name="name" title="First name and surname">
+        </fieldset>
+        <fieldset>
+          <legend>Mobile</legend>
+          <input type="text" name="mobile" title="We need your mobile phone to send you a SMS when the delivery is coming">
+        </fieldset>
+      </div>
+      <h3>Delivery Information</h3>
+      <div>
+        <fieldset>
+          <legend>Address</legend>
+          <input type="text" name="address" title="Write here your full address and ZIP code">
+        </fieldset>
+        <fieldset>
+          <legend>Delivery Date</legend>
+          <input type="text" id="datepicker" name="date">
+        </fieldset>
+        <input type="submit" value="Finish Order">
+      </div>
+    </div>
+  </div>
+
+  <footer>
+        <a href="index.html">Home</a>
+        <br>
+        <br>
+        <small> Copyright &copy;2017 Lauro Ribeiro.</small>
+  </footer>
+
+  <div id="dialog" title="your order has been placed">
+    <p>Thanks for making business with us.</p>
+  </div>
+
+  <script>
+  $( function() {
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
+    $('div#dialog').on('dialogclose', function(event) {
+      window.location = 'OrderCompleted.html'
+    });
+    $( "#datepicker" ).datepicker();
+    $( "#accordion" ).accordion();
+    $( "input[type=radio]" ).checkboxradio();
+    $( "input[type=submit]" ).button();
+    $( "input[type=submit]" ).click(function ( event ) {
+      event.preventDefault();
+      $( "#dialog" ).dialog( "open" );
+    });
+    $( '#accordion' ).tooltip();
+  } );
+  </script>
+
+</body>
+</html>
